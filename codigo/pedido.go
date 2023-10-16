@@ -28,8 +28,8 @@ const taxaEntrega = 10.0
 var Faturamento float64 = 0.0
 
 // Adiciona um novo pedido à lista de pedidos
-func adicionarPedido(entrega bool, produtosPedido []ProdutoPedido) {
-	valor := calcularValorTotal(produtosPedido, entrega)
+func AdicionarPedido(entrega bool, produtosPedido []ProdutoPedido) {
+	valor := CalcularValorTotal(produtosPedido, entrega)
 	pedido := Pedido{
 		ID:         proximoIDPedido,
 		Entrega:    entrega,
@@ -48,7 +48,7 @@ func adicionarPedido(entrega bool, produtosPedido []ProdutoPedido) {
 }
 
 // Calcula o valor total do pedido considerando a taxa de entrega se aplicável
-func calcularValorTotal(produtosPedido []ProdutoPedido, entrega bool) float64 {
+func CalcularValorTotal(produtosPedido []ProdutoPedido, entrega bool) float64 {
 	valor := 0.0
 	for _, item := range produtosPedido {
 		valor += item.Produto.Valor * float64(item.Quantidade)
@@ -60,7 +60,7 @@ func calcularValorTotal(produtosPedido []ProdutoPedido, entrega bool) float64 {
 }
 
 // Exibe todos os pedidos em andamento (não expedidos)
-func exibirPedidosEmAndamento() {
+func ExibirPedidosEmAndamento() {
 	listaVazia := true
 	for _, pedido := range Pedidos {
 		if pedido.ExpedidoEm.IsZero() {
@@ -77,7 +77,7 @@ func exibirPedidosEmAndamento() {
 	}
 }
 
-func exibirPedidosPorID(id int) *Pedido {
+func ExibirPedidosPorID(id int) *Pedido {
 	for _, pedido := range Pedidos {
 		if pedido.ID == id {
 			return &pedido
@@ -87,7 +87,7 @@ func exibirPedidosPorID(id int) *Pedido {
 }
 
 // Expede o primeiro pedido da lista que ainda não foi expedido
-func expedirPedido() *Pedido {
+func ExpedirPedido() *Pedido {
 	for i := range Pedidos {
 		if Pedidos[i].ExpedidoEm.IsZero() { // Verifica se o pedido ainda não foi expedido
 			Pedidos[i].ExpedidoEm = time.Now()

@@ -16,7 +16,7 @@ var Produtos []Produto
 var proximoIDProduto = 1
 
 // Adiciona um novo produto à lista de produtos
-func adicionarProduto(nome, descricao string, valor float64) {
+func AdicionarProduto(nome, descricao string, valor float64) {
 	produto := Produto{
 		ID:        proximoIDProduto,
 		Nome:      nome,
@@ -29,7 +29,7 @@ func adicionarProduto(nome, descricao string, valor float64) {
 }
 
 // Remove um produto da lista de produtos pelo ID
-func removerProduto(id int) {
+func RemoverProduto(id int) {
 	for indice, produto := range Produtos {
 		if produto.ID == id {
 			Produtos = append(Produtos[:indice], Produtos[indice+1:]...)
@@ -44,7 +44,7 @@ func removerProduto(id int) {
 }
 
 // Busca um produto pela ID e retorna
-func buscarProdutoPorID(id int) *Produto {
+func BuscarProdutoPorID(id int) *Produto {
 	for _, produto := range Produtos {
 		if produto.ID == id {
 			return &produto
@@ -54,7 +54,7 @@ func buscarProdutoPorID(id int) *Produto {
 }
 
 // Exibe todos os produtos cadastrados
-func exibirProdutos() {
+func ExibirProdutos() {
 	if len(Produtos) == 0 {
 		fmt.Println("Nenhum produto cadastrado.")
 		return
@@ -65,10 +65,10 @@ func exibirProdutos() {
 }
 
 // Adiciona uma lista de produtos, até o limite de produtos
-func adicionarProdutosEmLote(produtosLote []Produto) {
+func AdicionarProdutosEmLote(produtosLote []Produto) {
 	for _, produto := range produtosLote {
 		if len(Produtos) < limiteProdutos {
-			adicionarProduto(produto.Nome, produto.Descricao, produto.Valor)
+			AdicionarProduto(produto.Nome, produto.Descricao, produto.Valor)
 		} else {
 			fmt.Println("Limite de produtos atingido.")
 			return

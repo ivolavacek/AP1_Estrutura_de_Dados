@@ -41,35 +41,35 @@ func obterEscolhaUsuario() int {
 func tratarEscolha(escolha int) {
 	switch escolha {
 	case 1:
-		cadastrarProdutos()
+		CadastrarProdutos()
 	case 2:
-		interfaceRemoverProduto()
+		InterfaceRemoverProduto()
 	case 3:
-		buscarProdutoPorIDInterface()
+		BuscarProdutoPorIDInterface()
 	case 4:
-		exibirProdutos()
+		ExibirProdutos()
 	case 5:
 		fmt.Println("Cardápio:")
-		exibirProdutos()
+		ExibirProdutos()
 		fmt.Println("")
-		adicionarPedidoInterface()
+		AdicionarPedidoInterface()
 	case 6:
-		exibirPedidosEmAndamento()
+		ExibirPedidosEmAndamento()
 	case 7:
-		exibirPedidosPorIDInterface()
+		ExibirPedidosPorIDInterface()
 	case 8:
-		expedirPedidoInterface()
+		ExpedirPedidoInterface()
 	case 9:
-		exibirMetricas()
+		ExibirMetricas()
 	case 10:
 		fmt.Println("Obrigado por usar o sistema McRonald’s!")
-		exit()
+		Exit()
 	default:
 		fmt.Println("Opção inválida. Tente novamente.")
 	}
 }
 
-func cadastrarProdutos() {
+func CadastrarProdutos() {
 	var numeroProdutos int
 
 	fmt.Println("Quantos produtos você deseja adicionar?")
@@ -102,22 +102,22 @@ func cadastrarProdutos() {
 		produtosLote = append(produtosLote, produto)
 	}
 
-	adicionarProdutosEmLote(produtosLote)
+	AdicionarProdutosEmLote(produtosLote)
 }
 
-func interfaceRemoverProduto() {
+func InterfaceRemoverProduto() {
 	var id int
 
 	fmt.Println("Digite o ID do produto a ser removido:")
 	fmt.Scan(&id)
-	removerProduto(id) // chamando a função do arquivo produto.go
+	RemoverProduto(id) // chamando a função do arquivo produto.go
 }
 
-func buscarProdutoPorIDInterface() {
+func BuscarProdutoPorIDInterface() {
 	var id int
 	fmt.Println("Digite o ID do produto a ser buscado:")
 	fmt.Scan(&id)
-	produto := buscarProdutoPorID(id)
+	produto := BuscarProdutoPorID(id)
 	if produto != nil {
 		fmt.Printf("\nNome: %s\nDescrição: %s\nValor: R$%.2f\n", produto.Nome, produto.Descricao, produto.Valor)
 	} else {
@@ -125,7 +125,7 @@ func buscarProdutoPorIDInterface() {
 	}
 }
 
-func adicionarPedidoInterface() {
+func AdicionarPedidoInterface() {
 	var entrega bool
 	var opcaoEntrega string
 	produtosPedido := []ProdutoPedido{} // Inicializa uma lista de produtos vazia
@@ -139,7 +139,7 @@ func adicionarPedidoInterface() {
 			break // Encerra a seleção de produtos
 		}
 
-		produto := buscarProdutoPorID(idProduto)
+		produto := BuscarProdutoPorID(idProduto)
 		if produto == nil {
 			fmt.Println("Produto não encontrado. Por favor, tente novamente.")
 			continue // Volta para a próxima iteração
@@ -160,14 +160,14 @@ func adicionarPedidoInterface() {
 		entrega = true
 	}
 
-	adicionarPedido(entrega, produtosPedido)
+	AdicionarPedido(entrega, produtosPedido)
 }
 
-func exibirPedidosPorIDInterface() {
+func ExibirPedidosPorIDInterface() {
 	var id int
 	fmt.Println("Digite o ID do pedido a ser buscado:")
 	fmt.Scan(&id)
-	pedido := exibirPedidosPorID(id)
+	pedido := ExibirPedidosPorID(id)
 	if pedido != nil {
 		fmt.Println("")
 		for _, produto := range pedido.Produtos {
@@ -185,13 +185,13 @@ func exibirPedidosPorIDInterface() {
 	}
 }
 
-func expedirPedidoInterface() {
-	pedidoExpedido := expedirPedido()
+func ExpedirPedidoInterface() {
+	pedidoExpedido := ExpedirPedido()
 	if pedidoExpedido != nil {
 		fmt.Printf("Pedido ID %d foi expedido com sucesso!\n", pedidoExpedido.ID)
 	}
 }
 
-func exit() {
+func Exit() {
 	os.Exit(0)
 }
