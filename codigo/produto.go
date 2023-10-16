@@ -5,10 +5,10 @@ import (
 )
 
 type Produto struct {
-	ID          int
-	Nome        string
-	Descricao   string
-	Valor       float64
+	ID        int
+	Nome      string
+	Descricao string
+	Valor     float64
 }
 
 var limiteProdutos = 3 // Indicar o limite de produtos
@@ -23,8 +23,8 @@ func adicionarProduto(nome, descricao string, valor float64) {
 		Descricao: descricao,
 		Valor:     valor,
 	}
-  Produtos = append(Produtos, produto)
-  fmt.Printf("Produto '%s' adicionado com sucesso. ID: %d\n", produto.Nome, produto.ID)
+	Produtos = append(Produtos, produto)
+	fmt.Printf("Produto '%s' adicionado com sucesso. ID: %d\n", produto.Nome, produto.ID)
 	proximoIDProduto++
 }
 
@@ -33,13 +33,13 @@ func removerProduto(id int) {
 	for indice, produto := range Produtos {
 		if produto.ID == id {
 			Produtos = append(Produtos[:indice], Produtos[indice+1:]...)
-      fmt.Printf("Produto '%s' removido com sucesso!\n", produto.Nome)
-      return
+			fmt.Printf("Produto '%s' removido com sucesso!\n", produto.Nome)
+			return
 		}
-    if indice == len(Produtos)-1 && produto.ID != id {
-      fmt.Println("Produto não encontrado")
-      return
-    }
+		if indice == len(Produtos)-1 && produto.ID != id {
+			fmt.Println("Produto não encontrado")
+			return
+		}
 	}
 }
 
@@ -57,7 +57,7 @@ func buscarProdutoPorID(id int) *Produto {
 func exibirProdutos() {
 	if len(Produtos) == 0 {
 		fmt.Println("Nenhum produto cadastrado.")
-    return
+		return
 	}
 	for _, produto := range Produtos {
 		fmt.Printf("ID: %d, Nome: %s, Descrição: %s, Valor: R$%.2f\n", produto.ID, produto.Nome, produto.Descricao, produto.Valor)
@@ -67,11 +67,11 @@ func exibirProdutos() {
 // Adiciona uma lista de produtos, até o limite de produtos
 func adicionarProdutosEmLote(produtosLote []Produto) {
 	for _, produto := range produtosLote {
-    if len(Produtos) < limiteProdutos {
-		  adicionarProduto(produto.Nome, produto.Descricao, produto.Valor)
-	  } else {
-      fmt.Println("Limite de produtos atingido.")
-      return
-    }
-  }
+		if len(Produtos) < limiteProdutos {
+			adicionarProduto(produto.Nome, produto.Descricao, produto.Valor)
+		} else {
+			fmt.Println("Limite de produtos atingido.")
+			return
+		}
+	}
 }
