@@ -42,7 +42,11 @@ Segue o funcionamento de algumas das funcionalidades do programa
 
 
 
-
+**Comentários finais**
+O trabalho foi feito no site 'replit.com', quando foi passado o código para o VSCode, para criar o .exe a partir do Command Prompt, algumas funcionalidades foram afetadas.
+No VSCode, o arquivo main.go não rodou e o aviso de erro era que as funções definidas nos outros arquivos (metricas.go, pedido.go e produto.go) estavam 'undefined', mesmo com todos os arquivos incluidos no package 'main' e funções começadas em letras maiúsculas.
+O arquivo .exe está funcionando bem, exceto no cadastro de produtos onde o programa pula o cadastro do nome dos produtos.
+No replit.com, o programa funcionou perfeitamente. Segue o link [Replit](https://replit.com/@IvoLavacek/AP1-Goland-4#main.go)
 
 
 
